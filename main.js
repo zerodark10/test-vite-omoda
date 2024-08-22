@@ -1,32 +1,14 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+
 
 document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-  
-        <section class="modelo3d" style="height: 700px;">
-            <div class="logo-car">
-              <img src="img/logo.png" alt="">
-            </div>
+ 
+        <section class="modelo3d" style="height: 700px;  width: 100%;">
               <!-- Aquí se añadirá el canvas -->
                <div class="card-car">
-                  <h1 class="car">Producto</h1>
+              
                   <button id="toggleButton" class="">Encender luces</button>
                   <button id="resetCameraButton">Salir del interior</button>
                   <button id="startEngineButton" class="">Encender motor</button>
@@ -42,7 +24,7 @@ document.querySelector('#app').innerHTML = `
             </section>
 `
 
-setupCounter(document.querySelector('#counter'))
+
 import * as THREE from 'three'
         import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
         import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -52,7 +34,7 @@ import * as THREE from 'three'
         let hemiLight;
         //crear scena
         const scene = new THREE.Scene()
-        scene.add(new THREE.AxesHelper(500));
+        //scene.add(new THREE.AxesHelper(500));
     // Cargar y configurar el HDRI
     const rgbeLoader = new RGBELoader();
     rgbeLoader.load('hdri/2.hdr', function(texture) {
@@ -76,7 +58,7 @@ import * as THREE from 'three'
         scene.add(light4);
         //camara
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-        camera.position.z = 2.5
+        camera.position.z = 2.8
         camera.position.y = 1.2
         camera.position.x = 0.9
         light1.castShadow = true;
@@ -90,6 +72,9 @@ import * as THREE from 'three'
         // Añadir el canvas al div con la clase modelo3d
         const modelContainer = document.querySelector('.modelo3d');
         modelContainer.appendChild(renderer.domElement);
+
+
+        
         // Ajustar el tamaño del renderer al tamaño del contenedor
         renderer.setSize(modelContainer.clientWidth, modelContainer.clientHeight);
         
@@ -110,7 +95,7 @@ import * as THREE from 'three'
 
         
         loader.load(
-          '3d/Omoda.glb',
+          '3d/omadac5.glb',
           function (gltf) {
             const model = gltf.scene;
         
@@ -118,10 +103,10 @@ import * as THREE from 'three'
             carModel = gltf.scene;
             carModel.traverse(function (child) {
               console.log(child.name); 
-              if (child.name === 'Puerta-izquierda') {
+              if (child.name === 'puertadelanteraizquierda') {
                 leftDoor = child;
               }
-              if (child.name === 'Puerta-derecha') {
+              if (child.name === 'puertaderechadelantera') {
                 rightDoor = child;
               }
                // Identificar las ruedas (asegúrate de que los nombres coincidan con los del modelo GLTF)
@@ -323,8 +308,8 @@ resetCameraButton.addEventListener('click', resetCamera);
 
 
         
-        //const stats = new Stats()
-        //document.body.appendChild(stats.dom)
+      //  const stats = new Stats()
+     //   document.body.appendChild(stats.dom)
         
         function animate() {
           requestAnimationFrame(animate)
@@ -333,7 +318,7 @@ resetCameraButton.addEventListener('click', resetCamera);
         
           render()
         
-         // stats.update()
+          //stats.update()
         }
         
         function render() {
