@@ -40,19 +40,19 @@ rgbeLoader.load('hdri/2.hdr', function(texture) {
 });
 
 // Añadir luces
-let light1 = new THREE.PointLight(0xffffff, 3);
+let light1 = new THREE.PointLight(0xe499e4, 2);
 light1.position.set(0, 1.5, 2.5);
 scene.add(light1);
 
-let light2 = new THREE.PointLight(0xffffff, 3);
+let light2 = new THREE.PointLight(0xe499e4, 2);
 light2.position.set(2.5, 0.5, 0);
 scene.add(light2);
 
-let light3 = new THREE.PointLight(0xffffff, 3);
+let light3 = new THREE.PointLight(0xe499e4, 2);
 light3.position.set(0, 0.75, -4);
 scene.add(light3);
 
-let light4 = new THREE.PointLight(0xffffff, 3);
+let light4 = new THREE.PointLight(0xe499e4, 2);
 light4.position.set(-2.5, 1.5, 0);
 scene.add(light4);
 
@@ -135,7 +135,7 @@ loader.load(
 // Funciones para abrir y cerrar puertas de forma independiente
 function openLeftFrontDoor() {
     if (leftFrontDoor) {
-        leftFrontDoor.rotation.y = -Math.PI / 0.57; 
+        leftFrontDoor.rotation.y = -Math.PI / 0.566; 
         abrirDoor.play();
     }
 }
@@ -149,7 +149,7 @@ function closeLeftFrontDoor() {
 
 function openRightFrontDoor() {
     if (rightFrontDoor) {
-        rightFrontDoor.rotation.y = Math.PI / 0.57; 
+        rightFrontDoor.rotation.y = Math.PI / 0.566; 
         abrirDoor.play();
     }
 }
@@ -201,8 +201,9 @@ document.getElementById('closeLeftRearDoorButton').addEventListener('click', clo
 document.getElementById('openRightRearDoorButton').addEventListener('click', openRightRearDoor);
 document.getElementById('closeRightRearDoorButton').addEventListener('click', closeRightRearDoor);
 
-const originalCameraPosition = new THREE.Vector3(1.9, 2.2, 2.5);
+const originalCameraPosition = new THREE.Vector3(1.9, 2.6, 2.5);
 const originalTargetPosition = new THREE.Vector3(0, 0, 0);
+camera.position.x += 1;
 
 function resetCamera() {
     camera.position.copy(originalCameraPosition);

@@ -13,6 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  overflow: hidden;
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,7 +27,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+ 
   place-items: center;
   min-width: 100%;
   min-height: 100vh;
@@ -42,12 +45,15 @@ h1 {
   text-align: center;
   
 }
-
+button{
+  background-color: transparent !important;
+  border: transparent !important;
+}
 .card-car{
  position: absolute;
-  width: 300px;
+  width: 150px;
   top: 20%;
-  right: 1%;
+ 
 }
 
 .logo {
@@ -71,36 +77,59 @@ h1 {
   color: #888;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: transparent;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
 
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@media (max-width: 600px) {
+  .butonflex {
+    display: flex; /* Flexbox por defecto */
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+
+  
+
+  @media (max-width: 600px) {
+    .card-car{
+      top: 9px !important; 
+      width: 100% !important;
+      justify-content: center;
+      display: flex;
+    
+     
+  
+
+    }
+}
+@media (max-width: 600px) {
+  .resp{
+    display: flex;
+    flex-direction: column; /* Alinea los botones verticalmente */
+    align-items: center; 
+    
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+
+
+
+  .card-car{
+    position: absolute;
+     width: 150px;
+     top: 20%;
+    
+   }
+
+
+
+   @media (prefers-color-scheme: light) {
+    .card-car {
+      color: #213547;
+      background-color: #ffffff;
+    }
+    a:hover {
+      color: #747bff;
+    }
+    
 }
 * {
   box-sizing: border-box;
@@ -110,12 +139,10 @@ button:focus-visible {
  
 }
 .imagen-buton{
-  height: 60px;
+  height: 50px;
   border-color: #646cff;
 }
-.butonflex{
-  display: flex;
-}
+
 .bg-azul{
   background-color: #000E40 !important;
 }
@@ -217,15 +244,7 @@ body {
   margin-bottom: 20px;
 }
 
-.hero-text-home button {
-  padding: 10px 20px;
-  background-color: #B76EA1;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-}
+
 .buton{
   padding: 10px 20px;
   background-color: #B76EA1;
@@ -240,20 +259,9 @@ body {
 
 
 
-.hero-text-home-left button {
-  padding: 10px 20px;
-  background-color: #4FD1C5;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-}
 
 
-.hero-text-home-left button:hover {
-  background-color: #3AB9AC;
-}
+
 
 
 
@@ -947,14 +955,7 @@ tr img{ /*  imagen user  */
        color: #ddd;
       }
   }
-  @media (max-width: 600px) {
-      .hero-text-home button  {
-          text-align: center;
-          font-size: 16px;
-          height: 45px;
-          width: 120px;
-      }
-  }
+
   @media (max-width: 940px) {
       .navbar-home  {
       display: none;
