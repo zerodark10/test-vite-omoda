@@ -40,13 +40,14 @@ h1 {
   max-width: 100% !important;
   margin: 0 auto !important;
   text-align: center;
+  
 }
 
 .card-car{
-  position: absolute;
-  left: 10px;
-  top: 1%;
+ position: absolute;
   width: 300px;
+  top: 20%;
+  right: 1%;
 }
 
 .logo {
@@ -77,12 +78,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: transparent;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+
 }
 button:focus,
 button:focus-visible {
@@ -108,7 +109,13 @@ button:focus-visible {
   
  
 }
-
+.imagen-buton{
+  height: 60px;
+  border-color: #646cff;
+}
+.butonflex{
+  display: flex;
+}
 .bg-azul{
   background-color: #000E40 !important;
 }
@@ -1208,12 +1215,11 @@ tr img{ /*  imagen user  */
       }
   
   }
-  @media (max-width: 940px) {
+
       .hide{
      display: none;
       }
   
-  }
 
  
 .espacio{

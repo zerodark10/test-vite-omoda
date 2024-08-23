@@ -2,23 +2,25 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 
-document.querySelector('#app').innerHTML = `
-        <section class="modelo3d" style="height: 700px; width: 100%;">
-            <!-- Aquí se añadirá el canvas -->
-            <div class="card-car">
-                <button id="resetCameraButton">Salir del interior</button>
-                <button id="openLeftFrontDoorButton">Abrir puerta delantera izquierda</button>
-                <button id="closeLeftFrontDoorButton">Cerrar puerta delantera izquierda</button>
-                <button id="openRightFrontDoorButton">Abrir puerta delantera derecha</button>
-                <button id="closeRightFrontDoorButton">Cerrar puerta delantera derecha</button>
-                <button id="openLeftRearDoorButton">Abrir puerta trasera izquierda</button>
-                <button id="closeLeftRearDoorButton">Cerrar puerta trasera izquierda</button>
-                <button id="openRightRearDoorButton">Abrir puerta trasera derecha</button>
-                <button id="closeRightRearDoorButton">Cerrar puerta trasera derecha</button>
-                <button id="moveCameraButton" class="moveCameraButton">ver interior</button>
-            </div>
-        </section>
-`
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Ahora que el DOM está completamente cargado, selecciona el contenedor
+    const modelContainer = document.querySelector('.modelo3d');
+    
+    // Asegúrate de que el contenedor no sea null antes de intentar usar appendChild
+    if (modelContainer) {
+      // Aquí puedes añadir el canvas o cualquier otro contenido al contenedor
+      // Por ejemplo, para añadir el canvas de Three.js
+      const canvas = document.createElement('canvas');
+      modelContainer.appendChild(canvas);
+  
+      // Continúa con la configuración de Three.js y otros elementos
+      // ...
+    } else {
+      console.error('El contenedor .modelo3d no se encontró en el DOM.');
+    }
+  });
 
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -83,6 +85,10 @@ controls.minPolarAngle = Math.PI / 3; // Puedes ajustar estos valores según tus
 controls.maxPolarAngle = Math.PI / 2.5; // Puedes ajustar estos valores según tus necesidades
 //controls.minPolarAngle = Math.PI / 2; // Limita la rotación hacia arriba
 //controls.maxPolarAngle = Math.PI / 2; // Limita la rotación hacia abajo
+controls.enablePan = false;
+controls.enableZoom = false;
+
+
 // Cargar el modelo GLTF
 const loader = new GLTFLoader();
 let carModel;
@@ -92,23 +98,23 @@ hemiLight = new THREE.HemisphereLight(0xd7e2e5, 0x080820, 2);
 scene.add(hemiLight);
 
 loader.load(
-    '3d/omodagod.glb',
+    '3d/omodaV1.glb',
     function (gltf) {
         const model = gltf.scene;
 
         carModel = gltf.scene;
         carModel.traverse(function (child) {
             console.log(child.name);
-            if (child.name === 'puertadelanteraizquierda') {
+            if (child.name === 'Puerta-izquierda') {
                 leftFrontDoor = child;
             }
-            if (child.name === 'puertaderechadelantera') {
+            if (child.name === 'Puerta-derecha') {
                 rightFrontDoor = child;
             }
             if (child.name === 'puertatraseraizquierda') {
                 leftRearDoor = child;
             }
-            if (child.name === 'puertatraseraderecha') {
+            if (child.name === 'puertatraseraerecha') {
                 rightRearDoor = child;
             }
         });
@@ -157,28 +163,28 @@ function closeRightFrontDoor() {
 
 function openLeftRearDoor() {
     if (leftRearDoor) {
-        leftRearDoor.rotation.y = -Math.PI / 0.57; 
+        leftRearDoor.rotation.z = -Math.PI / 0.46; 
         abrirDoor.play();
     }
 }
 
 function closeLeftRearDoor() {
     if (leftRearDoor) {
-        leftRearDoor.rotation.y = 0; 
+        leftRearDoor.rotation.z =  -1.568;  
         cerrarDoor.play();
     }
 }
 
 function openRightRearDoor() {
     if (rightRearDoor) {
-        rightRearDoor.rotation.y = Math.PI / 0.57; 
+        rightRearDoor.rotation.z = Math.PI / 0.8; 
         abrirDoor.play();
     }
 }
 
 function closeRightRearDoor() {
     if (rightRearDoor) {
-        rightRearDoor.rotation.y = 0; 
+        rightRearDoor.rotation.z = -1.57; 
         cerrarDoor.play();
     }
 }
