@@ -85,6 +85,12 @@ button{
     flex-wrap: wrap; /* Permite que los elementos se envuelvan */
   }
 }
+@media (max-width: 600px) {
+  button img {
+   height: 40px !important;
+  }
+}
+
 
 
   
@@ -124,7 +130,7 @@ button{
    @media (prefers-color-scheme: light) {
     .card-car {
       color: #213547;
-      background-color: #ffffff;
+      
     }
     a:hover {
       color: #747bff;
